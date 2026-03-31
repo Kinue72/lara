@@ -1,70 +1,65 @@
-name: build
+name: buildnrelease
 
 on:
   push:
     branches: [ main ]
+  pull_request:
 
 jobs:
-  build:
+  build-and-release:
     runs-on: macos-latest
-    permissions:
-      contents: write
-
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      - name: checkout 
+        uses: actions/checkout@v4
 
-      - name: show repo structure
-        run: ls -R
-        
-      - name: build ipa
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode.app
+
+      - name: show xcode version
+        run: xcodebuild -version
+
+      - name: build
         run: |
           xcodebuild \
             -project lara.xcodeproj \
             -scheme lara \
-            -configuration Release \
-            -sdk iphoneos \
+            -configuration Debug \
+            -sdk iphonesimulator \
             CODE_SIGNING_ALLOWED=NO \
-            archive \
-            -archivePath build/lara.xcarchive
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            build
 
-          xcodebuild -exportArchive \
-            -archivePath build/lara.xcarchive \
-            -exportPath build \
-            -exportOptionsPlist /dev/stdin <<EOF
-          {
-            "method": "development"
-          }
-          EOF
-
-      - name: generate build id
-        id: buildid
-        run: echo "id=$(date +'%Y%m%d-%H%M%S')" >> $GITHUB_OUTPUT
-
-      - name: collect commits
+      - name: intall gh cli 
         run: |
-          git log --since="12 hours ago" --pretty=format:"- %h %s (%an)" > notes.txt
+          brew install gh || echo "gh already installed"
 
-      - name: archive old latest
+      - name: auth gh CLI
         env:
-          GH_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh auth login --with-token <<< "$GITHUB_TOKEN"
+
+      - name: handle archival shit
+        id: handle_release
         run: |
-          if gh release view latest >/dev/null 2>&1; then
-            echo "archiving previous latest"
-            IPA=$(gh release download latest -p "*.ipa" -D old_release | head -n1)
-            gh release create "release-${{ steps.buildid.outputs.id }}-old" "$IPA" \
-              --title "release ${{ steps.buildid.outputs.id }} (old)" \
-              --notes "archived previous release"
-            gh release delete latest -y
-            git push origin :refs/tags/latest || true
+          LATEST=$(gh release list --limit 1 --json tagName,createdAt | jq -r '.[0].tagName')
+          echo "latest release: $LATEST"
+
+          if [ "$LATEST" != "null" ]; then
+            SHA=$(gh release view "$LATEST" --json targetCommitish -q '.targetCommitish')
+            echo "tagging old release as '${LATEST}-old'"
+            git tag "${LATEST}-old" "$SHA"
+            git push origin "${LATEST}-old"
+
+            gh release delete "$LATEST" --yes
           fi
 
-      - name: create new latest
-        env:
-          GH_TOKEN: ${{ github.token }}
+      - name: new release
         run: |
-          IPA=$(find build -name "*.ipa" | head -n1)
-          gh release create latest "$IPA" \
-            --title "latest build (${{ steps.buildid.outputs.id }})" \
-            --notes-file notes.txt
+          COMMITS=$(git log --since="12 hours ago" --pretty=format:"- %s (%an)")
+          TAG="latest ($(date +%Y%m%d%H%M%S))"
+          
+          gh release create "$TAG" tree/main/build/Debug-iphonesimulator/lara.ipa \
+            --title "$TAG" \
+            --notes "$COMMITS" \
+            --prerelease
