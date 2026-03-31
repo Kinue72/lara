@@ -32,20 +32,19 @@ jobs:
             -archivePath $PWD/build/lara.xcarchive
       
           EXPORT_PLIST="$PWD/build/exportOptions.plist"
-          cat > "$EXPORT_PLIST" <<'EOF'
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-  <key>method</key>
-  <string>ad-hoc</string>
-  <key>compileBitcode</key>
-  <false/>
-  <key>signingStyle</key>
-  <string>automatic</string>
-</dict>
-</plist>
-EOF
+          printf '%s\n' \
+            '<?xml version="1.0" encoding="UTF-8"?>' \
+            '<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">' \
+            '<plist version="1.0">' \
+            '<dict>' \
+            '  <key>method</key>' \
+            '  <string>ad-hoc</string>' \
+            '  <key>compileBitcode</key>' \
+            '  <false/>' \
+            '  <key>signingStyle</key>' \
+            '  <string>automatic</string>' \
+            '</dict>' \
+            '</plist>' > "$EXPORT_PLIST"
 
           xcodebuild -exportArchive \
             -archivePath $PWD/build/lara.xcarchive \
