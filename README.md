@@ -23,8 +23,12 @@ If lara doesnt work on your device, and you want to help the project, please als
 - MobileGestalt Editor
 
 ## known issues:
-- on iOS 17.x, the kernel panics when lara is closed from the app switcher. this may or may not be fixed soon?
+- on iOS 17.x, the kernel may panic when lara is closed from the app switcher.
 - dirtyzero does not work.
+- ui is buggy on 17.x
+- doesnt work on ipad m2?
+- doesnt work on a18 pro?
+- kernelcache download broken for some versions.
 
 ## tips:
 deleting and redownloading kernelcache is known to fix many issues. do this before asking me for support.  
