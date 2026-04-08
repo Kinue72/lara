@@ -58,7 +58,6 @@ If lara doesnt work on your device, and you want to help the project, please als
 - dirtyzero does not work.
 - ui is buggy on 17.x
 - doesnt work on ipad m2?
-- doesnt work on a18 pro?
 - kernelcache download broken for some versions.
 
 ## installation:
