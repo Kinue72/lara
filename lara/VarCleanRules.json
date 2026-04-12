@@ -1,76 +1,24 @@
 {
-  "\/var\/tmp" : {
-    "default" : "blacklist",
-    "blacklist" : [
-
-    ],
-    "whitelist" : [
-      {
-        "match" : "regexp",
-        "name" : "^\\w{8}-\\w{4}-\\w{4}-\\w{4}-\\w{12}$"
-      },
-      {
-        "match" : "regexp",
-        "name" : "^com\\.apple\\."
-      },
-      {
-        "match" : "regexp",
-        "name" : "^SSOBackup-"
-      },
-      {
-        "match" : "regexp",
-        "name" : "^SOSBackup-.*-tomb"
-      },
-      {
-        "match" : "regexp",
-        "name" : "^CFNetworkDownload_"
-      },
-      {
-        "match" : "regexp",
-        "name" : "^NSIRD_installd_"
-      },
-      ".LINKS",
-      "MediaCache",
-      "analytics",
-      "aud",
-      "ct.shutdown",
-      "fseventsd-uuid",
-      "hdds6.dat",
-      "nfcd.firstlaunch",
-      "powerlog",
-      "recommendations",
-      "journeys",
-      "ClonedAXAsset",
-      "internal",
-      "modelDataBlob.mlmodelc",
-      "SoftwareUpdateCore",
-      "CalNotificationsAvailable"
-    ]
+  "/var/tmp": {
+    "blacklist": []
   },
-  "\/var\/mobile\/Library\/UserConfigurationProfiles\/PublicInfo\/" : {
-    "blacklist" : [
+  "/var/mobile/Library/UserConfigurationProfiles/PublicInfo/": {
+    "blacklist": [
       "Flex3Patches.plist"
-    ],
-    "whitelist" : [
-      "MCMeta.plist",
-      "NamespacedUserSettings.plist",
-      "PublicEffectiveUserSettings.plist",
-      "Truth.plist"
     ]
   },
-  "\/var\/mobile\/Library\/SplashBoard\/Snapshots" : {
-    "default" : "blacklist",
-    "blacklist" : [
+  "/var/mobile/Library/SplashBoard/Snapshots": {
+    "blacklist": [
       "com.roothide.manager",
       {
-        "match" : "regexp",
-        "name" : "^com\\.m1337\\."
+        "match": "regexp",
+        "name": "^com\\.m1337\\."
       },
       "com.opa334.Dopamine.roothide",
       "com.opa334.Dopamine",
       {
-        "match" : "regexp",
-        "name" : "^com\\.tigisoftware\\."
+        "match": "regexp",
+        "name": "^com\\.tigisoftware\\."
       },
       "com.xina.jailbreak",
       "org.coolstar.SileoStore",
@@ -78,84 +26,52 @@
       "ws.hbang.Terminal",
       "xyz.willy.Zebra",
       "com.apple.Terminal"
-    ],
-    "whitelist" : [
-      {
-        "match" : "regexp",
-        "name" : "^com\\.apple\\."
-      }
     ]
   },
-  "\/var\/mobile\/Library\/Application Support\/Containers" : {
-    "default" : "blacklist",
-    "blacklist" : [
+  "/var/mobile/Library/Application Support/Containers": {
+    "blacklist": [
       "xyz.willy.Zebra",
       {
-        "match" : "regexp",
-        "name" : "^com\\.tigisoftware\\."
+        "match": "regexp",
+        "name": "^com\\.tigisoftware\\."
       },
       "org.coolstar.SileoStore",
       "com.apple.Terminal"
     ]
   },
-  "\/var\/containers\/Bundle" : {
-    "blacklist" : [
+  "/var/containers/Bundle": {
+    "blacklist": [
       "dylib",
       "xina"
-    ],
-    "whitelist" : [
-      "Application"
     ]
   },
-  "\/var\/mobile\/Library\/Cookies" : {
-    "default" : "blacklist",
-    "blacklist" : [
+  "/var/mobile/Library/Cookies": {
+    "blacklist": [
       "com.johncoates.Flex.binarycookies"
-    ],
-    "whitelist" : [
-      {
-        "match" : "regexp",
-        "name" : "^com\\.apple\\."
-      },
-      "Cookies.binarycookies"
     ]
   },
-  "\/var\/root\/Library\/Caches" : {
-    "default" : "blacklist",
-    "blacklist" : [
+  "/var/root/Library/Caches": {
+    "blacklist": [
       "shshd"
-    ],
-    "whitelist" : [
-      {
-        "match" : "regexp",
-        "name" : "^com\\.apple\\."
-      },
-      "Backup",
-      "locationd"
     ]
   },
-  "\/var\/mobile\/Library\/Logs" : {
-    "default" : "whitelist",
-    "blacklist" : [
+  "/var/mobile/Library/Logs": {
+    "blacklist": [
       "Cydia"
-    ],
-    "whitelist" : [
-
     ]
   },
-  "\/var\/mobile\/Library\/Preferences" : {
-    "default" : "whitelist",
-    "blacklist" : [
+  "/var/mobile/Library/Preferences": {
+    "blacklist": [
       {
-        "match" : "regexp",
-        "name" : "^com\\.m1337\\."
+        "match": "regexp",
+        "name": "^com\\.m1337\\."
       },
       "com.roothide.manager.plist",
       "com.opa334.Dopamine.roothide.plist",
       "com.opa334.Dopamine.plist",
       {
-        "match" : "regexp",
-        "name" : "^com\\.tigisoftware\\."
+        "match": "regexp",
+        "name": "^com\\.tigisoftware\\."
       },
       "com.xina.jailbreak.plist",
       "org.coolstar.SileoStore.plist",
@@ -165,98 +81,32 @@
       "com.apple.lockscreencache-new.plist",
       "com.apple.homescreencache-new.plist",
       "com.apple.terminal.plist"
-    ],
-    "whitelist" : [
-      {
-        "match" : "regexp",
-        "name" : "^com\\.apple\\."
-      },
-      {
-        "match" : "regexp",
-        "name" : "^systemgroup\\.com\\.apple\\."
-      },
-      ".GlobalPreferences.plist",
-      ".GlobalPreferences_m.plist",
-      "bluetoothaudiod.plist",
-      "NetworkInterfaces.plist",
-      "OSThermalStatus.plist",
-      "preferences.plist",
-      "osanalyticshelper.plist",
-      "UserEventAgent.plist",
-      "wifid.plist",
-      "dprivacyd.plist",
-      "silhouette.plist",
-      "nfcd.plist",
-      "kNPProgressTrackerDomain.plist",
-      "siriknowledged.plist",
-      "UITextInputContextIdentifiers.plist",
-      "mobile_storage_proxy.plist",
-      "splashboardd.plist",
-      "mobile_installation_proxy.plist",
-      "languageassetd.plist",
-      "ptpcamerad.plist",
-      "com.google.gmp.measurement.monitor.plist",
-      "com.google.gmp.measurement.plist"
     ]
   },
-  "\/var\/mobile\/Library\/Caches" : {
-    "default" : "blacklist",
-    "blacklist" : [
+  "/var/mobile/Library/Caches": {
+    "blacklist": [
       "ImageTables",
       "SentryCrash",
       "io.sentry",
       "com.hackemist.SDImageCache",
       "com.opa334.Dopamine",
       {
-        "match" : "regexp",
-        "name" : "^com\\.tigisoftware\\."
+        "match": "regexp",
+        "name": "^com\\.tigisoftware\\."
       },
       {
-        "match" : "regexp",
-        "name" : "^com\\.m1337\\."
+        "match": "regexp",
+        "name": "^com\\.m1337\\."
       },
       "org.coolstar.SileoStore",
       "ws.hbang.Terminal",
       "xyz.willy.Zebra",
       "Cephei",
       "com.apple.Terminal"
-    ],
-    "whitelist" : [
-      {
-        "match" : "regexp",
-        "name" : "^com\\.apple\\."
-      },
-      {
-        "match" : "regexp",
-        "name" : "^TelephonyUI-\\d+$"
-      },
-      {
-        "match" : "regexp",
-        "name" : "^FamilyMarquee.*Mode-.*\\.png$"
-      },
-      ".com.apple.persistentconnection.settings.lock.lock",
-      "Checkpoint.plist",
-      "CloudKit",
-      "GameKit",
-      "GeoServices",
-      "FamilyCircle",
-      "DateFormats.plist",
-      "INSTALLATION",
-      "MappedImageCache",
-      "PassKit",
-      "RemoteConfiguration.plist",
-      "VoiceServices",
-      "VoiceTrigger",
-      "mediaanalysisd-service",
-      "rtcreportingd",
-      "sharedCaches",
-      "Backup",
-      "ssu"
     ]
   },
-  "\/var" : {
-    "default" : "whitelist",
-    "blacklist" : [
+  "/var": {
+    "blacklist": [
       "stash",
       "alternatives",
       "ap",
@@ -291,55 +141,10 @@
       "zshrc",
       "master.passwd",
       ".keep_symlinks"
-    ],
-    "whitelist" : [
-      ".DocumentRevisions-V100",
-      ".fseventsd",
-      ".overprovisioning_file",
-      "Keychains",
-      "MobileDevice",
-      "buddy",
-      "datamigrator",
-      "folders",
-      "keybags",
-      "networkd",
-      "root",
-      "tmp",
-      "Managed Preferences",
-      "MobileSoftwareUpdate",
-      "containers",
-      "db",
-      "hardware",
-      "mobile",
-      "preferences",
-      "run",
-      "vm",
-      "MobileAsset",
-      "audit",
-      "empty",
-      "installd",
-      "log",
-      "logs",
-      "msgs",
-      "protected",
-      "select",
-      "wireless",
-      "dirs_cleaner",
-      "dextcores",
-      "staged_system_apps",
-      "internal"
     ]
   },
-  "\/var\/containers" : {
-    "whitelist" : [
-      "Bundle",
-      "Data",
-      "Shared",
-      "Temp"
-    ]
-  },
-  "\/var\/mobile\/Library" : {
-    "blacklist" : [
+  "/var/mobile/Library": {
+    "blacklist": [
       "Sileo",
       "Filza",
       "Flex3",
@@ -349,282 +154,61 @@
       "Terminal",
       "varClean",
       "ADManager"
-    ],
-    "whitelist" : [
-      {
-        "match" : "regexp",
-        "name" : "^com\\.apple\\."
-      },
-      "Accessibility",
-      "CoreBrightness",
-      "Keyboard",
-      "Preferences",
-      "Voicemail",
-      "Accounts",
-      "CoreDuet",
-      "KeyboardServices",
-      "PrivacyAccounting",
-      "WatchConnectivity",
-      "AddressBook",
-      "CoreFollowUp",
-      "LASD",
-      "Recents",
-      "Weather",
-      "AggregateDictionary",
-      "CountryBundles",
-      "LanguageModeling",
-      "Reminders",
-      "WebClips",
-      "AirPlayRoutePrediction",
-      "CrashReporter",
-      "Logs",
-      "ReplayKit",
-      "WebKit",
-      "ApplePushService",
-      "DES",
-      "Mail",
-      "SMS",
-      "chronod",
-      "Application Support",
-      "DataAccess",
-      "MediaRemote",
-      "Safari",
-      "com.apple.ClipServices.clipserviced",
-      "ApplicationSync",
-      "DataDeliveryServices",
-      "MediaStream",
-      "SafariSafeBrowsing",
-      "com.apple.FamilyControlsAgent",
-      "Assets",
-      "DeviceRegistry.dontBackUp",
-      "MedicalID",
-      "SafeHarbor",
-      "com.apple.VideoSubscriberAccount.DeveloperService",
-      "Assistant",
-      "DeviceRegistry.state",
-      "MemoryMaintenance",
-      "Saved Application State",
-      "com.apple.WatchListKit",
-      "Avatar",
-      "DiagnosticPipeline",
-      "MessagesMetaData",
-      "SecureElementService",
-      "com.apple.appleaccountd",
-      "BackBoard",
-      "DifferentialPrivacy",
-      "Mobile Documents",
-      "Sharing",
-      "com.apple.bluetooth.services.cloud",
-      "Backup",
-      "DoNotDisturb",
-      "MobileBluetooth",
-      "Shortcuts",
-      "com.apple.iTunesCloud",
-      "Biome",
-      "DuetActivityScheduler",
-      "MobileContainerManager",
-      "SoftwareUpdate",
-      "com.apple.icloud.searchpartyd",
-      "BulletinBoard",
-      "DuetExpertCenter",
-      "MobileInstallation",
-      "SoftwareUpdateCore",
-      "com.apple.imagecapture",
-      "Caches",
-      "ExposureNotification",
-      "NFStorage",
-      "SplashBoard",
-      "com.apple.internal.ck",
-      "Calendar",
-      "ExternalAccessory",
-      "NanoMusicSync",
-      "Spotlight",
-      "com.apple.itunesstored",
-      "CallDirectory",
-      "FaceTime",
-      "NanoTimeKit",
-      "SpringBoard",
-      "com.apple.nsurlsessiond",
-      "CallHistoryDB",
-      "FairPlay",
-      "Notes",
-      "StatusKit",
-      "com.apple.nsurlsessiond-launchd",
-      "CallHistoryTransactions",
-      "OSAnalytics",
-      "Suggestions",
-      "com.apple.private.SensorKit",
-      "CallServices",
-      "FinHealth",
-      "OTALogging",
-      "SyncedPreferences",
-      "coreidvd",
-      "Carrier Bundles",
-      "FrontBoard",
-      "OnDemandResources",
-      "TCC",
-      "dmd",
-      "CarrierDefault.bundle",
-      "GameKit",
-      "Operator Bundle.bundle",
-      "Translation",
-      "homed",
-      "ClassKit",
-      "HTTPStorages",
-      "Operator1Bundle.bundle",
-      "Trial",
-      "idcredd",
-      "Contacts",
-      "Handwriting",
-      "Operator2Bundle.bundle",
-      "UserConfigurationProfiles",
-      "locationd",
-      "ControlCenter",
-      "Health",
-      "POMMES",
-      "UserFonts",
-      "mad",
-      "Cookies",
-      "ISP",
-      "Passes",
-      "UserNotifications",
-      "terminus",
-      "CoreAS",
-      "IdentityServices",
-      "PersonalizationPortrait",
-      "UserNotificationsUI",
-      "CoreAccessories",
-      "Inboxes",
-      "Photos",
-      "VoiceServices",
-      "CoreBehavior",
-      "Intents",
-      "PowerUI",
-      "VoiceTrigger",
-      "ConfigurationProfiles",
-      "ProactiveInsights",
-      "Carrier Bundle.bundle",
-      "Carrier1Bundle.bundle",
-      "PeopleSuggester",
-      "News",
-      ".locallized",
-      "CloudStorage",
-      "Finance",
-      "Measure",
-      "News",
-      "Recordings",
-      "ResponseKit",
-      "Settings",
-      "studentd",
-      "VirtualCaptureCard",
-      "Wallet",
-      "AppleMediaServices",
-      "IntelligencePlatform",
-      "sessionkitd",
-      "LiveFiles",
-      "Maps",
-      "OSIntelligence",
-      "Phone",
-      "Seymour",
-      "UnifiedAssetFramework"
     ]
   },
-  "\/var\/mobile\/Library\/Saved Application State" : {
-    "default" : "blacklist",
-    "blacklist" : [
+  "/var/mobile/Library/Saved Application State": {
+    "blacklist": [
       "com.opa334.Dopamine.savedState",
       {
-        "match" : "regexp",
-        "name" : "^com\\.tigisoftware\\."
+        "match": "regexp",
+        "name": "^com\\.tigisoftware\\."
       },
       "org.coolstar.SileoStore.savedState",
       "ws.hbang.Terminal.savedState",
       "xyz.willy.Zebra.savedState",
       "ru.domo.cocoatop64.savedState",
       "com.apple.Terminal.savedState"
-    ],
-    "whitelist" : [
-      {
-        "match" : "regexp",
-        "name" : "^com\\.apple\\."
-      }
     ]
   },
-  "\/var\/mobile\/Library\/WebKit" : {
-    "blacklist" : [
+  "/var/mobile/Library/WebKit": {
+    "blacklist": [
       "xyz.willy.Zebra",
       "com.ivanobilenchi.icleaner"
-    ],
-    "whitelist" : [
-      "Databases",
-      "LocalStorage",
-      {
-        "match" : "regexp",
-        "name" : "^com\\.apple\\."
-      }
     ]
   },
-  "\/var\/mobile" : {
-    "blacklist" : [
+  "/var/mobile": {
+    "blacklist": [
       "log.txt",
       ".ekenablelogging",
       ".eksafemode",
       ".serotonin_hidetext",
       ".TrollApps",
       "Serotonin.jp2"
-    ],
-    "whitelist" : [
-      ".fseventsd",
-      ".DocumentRevisions-V100",
-      "Applications",
-      "Containers",
-      "Documents",
-      "Downloads",
-      "Library",
-      "Media",
-      "MobileSoftwareUpdate",
-      "tmp"
     ]
   },
-  "\/var\/mobile\/Library\/Application Support" : {
-    "blacklist" : [
+  "/var/mobile/Library/Application Support": {
+    "blacklist": [
       "xyz.willy.Zebra",
       "com.apple.Terminal"
-    ],
-    "whitelist" : [
-      {
-        "match" : "regexp",
-        "name" : "^com\\.apple\\."
-      },
-      "CloudDocs",
-      "CloudKitMailConversationsFlags",
-      "Containers",
-      "FileProvider",
-      "UsageTrackingAgent",
-      "videosubscriptionsd",
-      "CNDuplication",
-      "icloudsubscriptionoptimizerd",
-      "networkserviceproxy"
     ]
   },
-  "\/var\/mobile\/Media" : {
-    "default" : "whitelist",
-    "blacklist" : [
+  "/var/mobile/Media": {
+    "blacklist": [
       {
-        "match" : "include",
-        "name" : "Auto"
+        "match": "include",
+        "name": "Auto"
       },
       {
-        "match" : "include",
-        "name" : "Touch"
+        "match": "include",
+        "name": "Touch"
       },
       {
-        "match" : "include",
-        "name" : "Theme"
+        "match": "include",
+        "name": "Theme"
       },
       {
-        "match" : "include",
-        "name" : "Script"
+        "match": "include",
+        "name": "Script"
       },
       "Cydia",
       "CatScript",
@@ -645,175 +229,63 @@
       "KDTScript",
       "NeonStaticClockIcon.png",
       "Erika"
-    ],
-    "whitelist" : [
-      {
-        "match" : "regexp",
-        "name" : "^com\\.apple\\."
-      },
-      "AirFair",
-      "Books",
-      "CloudAssets",
-      "DCIM",
-      "Deferred",
-      "Downloads",
-      "EnhancedAudioSharedKeys",
-      "Espresso",
-      "LoFiCloudAssets",
-      "ManagedPurchases",
-      "MediaAnalysis",
-      "Music",
-      "PhotoData",
-      "PhotoStreamsData",
-      "Photos",
-      "Podcasts",
-      "PublicStaging",
-      "Purchases",
-      "Radio",
-      "Recordings",
-      "Vibrations",
-      "iTunes_Control"
     ]
   },
-  "\/var\/mobile\/Library\/HTTPStorages" : {
-    "default" : "blacklist",
-    "blacklist" : [
+  "/var/mobile/Library/HTTPStorages": {
+    "blacklist": [
       {
-        "match" : "regexp",
-        "name" : "^com\\.m1337\\."
+        "match": "regexp",
+        "name": "^com\\.m1337\\."
       },
       "com.opa334.Dopamine",
       {
-        "match" : "regexp",
-        "name" : "^com\\.tigisoftware\\."
+        "match": "regexp",
+        "name": "^com\\.tigisoftware\\."
       },
       "org.coolstar.SileoStore",
       "ws.hbang.Terminal",
       "xyz.willy.Zebra"
-    ],
-    "whitelist" : [
-      {
-        "match" : "regexp",
-        "name" : "^com\\.apple\\."
-      }
     ]
   },
-  "\/var\/MobileSoftwareUpdate\/mnt1" : {
-    "default" : "blacklist",
-    "blacklist" : [
-
-    ],
-    "whitelist" : [
-
-    ]
+  "/var/MobileSoftwareUpdate/mnt1": {
+    "blacklist": []
   },
-  "\/var\/root\/Library\/Preferences" : {
-    "default" : "whitelist",
-    "blacklist" : [
+  "/var/root/Library/Preferences": {
+    "blacklist": [
       "com.xina.jailbreak.plist",
       "com.xina.blacklist.plist",
       "ws.hbang.Terminal.plist"
-    ],
-    "whitelist" : [
-      {
-        "match" : "regexp",
-        "name" : "^com\\.apple\\."
-      },
-      {
-        "match" : "regexp",
-        "name" : "^systemgroup\\.com\\.apple\\."
-      },
-      "UserEventAgent.plist",
-      "osanalyticshelper.plist",
-      "wifid.plist"
     ]
   },
-  "\/var\/root\/Library\/Application Support" : {
-    "blacklist" : [
-
-    ],
-    "whitelist" : [
-      {
-        "match" : "regexp",
-        "name" : "^com\\.apple\\."
-      }
-    ]
+  "/var/root/Library/Application Support": {
+    "blacklist": []
   },
-  "\/var\/lib" : {
-    "default" : "blacklist",
-    "blacklist" : [
+  "/var/lib": {
+    "blacklist": [
       "filza"
     ]
   },
-  "\/var\/mobile\/Documents" : {
-    "blacklist" : [
+  "/var/mobile/Documents": {
+    "blacklist": [
       "Flex",
       "DumpDecrypter",
       ".DynamicCowBackups"
-    ],
-    "whitelist" : [
-      {
-        "match" : "regexp",
-        "name" : "^com\\.apple\\."
-      }
     ]
   },
-  "\/var\/log" : {
-    "default" : "blacklist",
-    "blacklist" : [
-
-    ],
-    "whitelist" : [
-      {
-        "match" : "regexp",
-        "name" : "^com\\.apple\\."
-      },
-      "asl",
-      "mDNSResponder",
-      "ppp"
-    ]
+  "/var/log": {
+    "blacklist": []
   },
-  "\/var\/root" : {
-    "blacklist" : [
+  "/var/root": {
+    "blacklist": [
       ".bash_history",
       ".config",
       ".local"
-    ],
-    "whitelist" : [
-      "Library",
-      ".bootstrapped",
-      ".aks_migrate",
-      ".aks_whitelist",
-      ".mkb_seshat_health",
-      ".obliterated",
-      ".aks_allowlist"
     ]
   },
-  "\/var\/root\/Library" : {
-    "whitelist" : [
-      "Application Support",
-      "Caches",
-      "HTTPStorages",
-      "Lockdown",
-      "Logs",
-      "MobileContainerManager",
-      "Preferences",
-      "USBRestricted",
-      "com.apple.wifianalyticsd",
-      "Catacomb"
-    ]
-  },
-  "\/var\/root\/Library\/HTTPStorages" : {
-    "default" : "blacklist",
-    "blacklist" : [
+  "/var/root/Library/HTTPStorages": {
+    "blacklist": [
       "shshd",
       "FilzaHelper"
-    ],
-    "whitelist" : [
-      {
-        "match" : "regexp",
-        "name" : "^com\\.apple\\."
-      }
     ]
   }
 }
