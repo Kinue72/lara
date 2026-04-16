@@ -8,10 +8,28 @@
 import SwiftUI
 
 struct ToolsView: View {
+    private enum TokenClass: String, CaseIterable, Identifiable {
+        case read = "com.apple.app-sandbox.read"
+        case write = "com.apple.app-sandbox.write"
+        case readWrite = "com.apple.app-sandbox.read-write"
+
+        var id: String { rawValue }
+
+        var label: String {
+            switch self {
+            case .read: return "read"
+            case .write: return "write"
+            case .readWrite: return "read-write"
+            }
+        }
+    }
+
     @ObservedObject private var mgr = laramgr.shared
     @State private var isaslr: Bool = aslrstate
     @State var showtoken: Bool = false
-    @AppStorage("token") var token: String?
+    @AppStorage("lara.sbx.issuedToken") private var token: String = ""
+    @State private var tokenIssueClass: TokenClass = .readWrite
+    @State private var tokenIssuePath: String = "/"
     @State private var uid: uid_t = getuid()
     @State private var pid: pid_t = getpid()
     
@@ -97,7 +115,6 @@ struct ToolsView: View {
 
                 HStack {
                     Text("PID:")
-
                     Spacer()
 
                     Text("\(pid)")
@@ -114,59 +131,79 @@ struct ToolsView: View {
             } header: {
                 Text("Process")
             }
-
+            
             Section {
                 HStack {
                     if showtoken {
                         Text(mgr.sbxready ? "tkn" : "No Saved Token.")
                             .foregroundColor(.secondary)
                             .monospaced()
-                            .lineLimit(nil)
                     } else {
-                        if let token = token, !token.isEmpty {
-                            SecureField("", text: .constant(token))
-                                .textFieldStyle(.plain)
-                                .disabled(true)
-                                .allowsHitTesting(false)
+                        if !token.isEmpty {
+                            Text(token)
                                 .foregroundColor(.secondary)
+                                .monospaced()
                                 .lineLimit(1)
-                                .truncationMode(.tail)
+                                .truncationMode(.middle)
                         } else {
                             Text("No Saved Token.")
                                 .foregroundColor(.secondary)
-                                .lineLimit(1)
-                                .truncationMode(.tail)
                         }
                     }
                     
                     Spacer()
                     
                     Button {
-                        UIPasteboard.general.string = token ?? ""
+                        UIPasteboard.general.string = token.isEmpty ? nil : token
                     } label: {
                         Image(systemName: "doc.on.doc")
                     }
+                    .disabled(token.isEmpty)
                 }
                 .contextMenu {
-                    if token != nil {
+                    if !token.isEmpty {
                         Button {
-                            UIPasteboard.general.string = token ?? ""
+                            UIPasteboard.general.string = token
                         } label: {
                             Label("Copy", systemImage: "doc.on.doc")
                         }
                     }
                 }
-                
+
+                HStack {
+                    Text("Class:")
+                    Spacer()
+
+                    Picker(" ", selection: $tokenIssueClass) {
+                        ForEach(TokenClass.allCases) { tokenClass in
+                            Text(tokenClass.label).tag(tokenClass)
+                        }
+                    }
+                    .pickerStyle(.menu)
+                }
+
+                HStack {
+                    Text("Path:")
+                    Spacer()
+                    
+                    TextField("/", text: $tokenIssuePath)
+                        .textInputAutocapitalization(.never)
+                        .autocorrectionDisabled()
+                        .foregroundColor(.secondary)
+                        .monospaced()
+                        .lineLimit(1)
+                        .truncationMode(.middle)
+                        .fixedSize(horizontal: true, vertical: false)
+                }
+
                 Button {
-                    token = mgr.sbxgettoken(path: "/var/mobile")
+                    token = mgr.sbxissuetoken(extClass: tokenIssueClass.rawValue, path: tokenIssuePath) ?? ""
                 } label: {
                     Text("Issue Token")
                 }
                 .disabled(!mgr.sbxready)
             } header: {
                 Text("Sandbox")
-            } footer: {
-                Text("Likely broken.")
             }
         }
         .navigationTitle("Tools")

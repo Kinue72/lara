@@ -388,11 +388,30 @@ final class laramgr: ObservableObject {
         return true
     }
     
-    func sbxgettoken(path: String) -> String? {
-        guard let cstr = path.cString(using: .utf8) else { return nil }
-        guard let result = sbx_gettoken(path as NSString as String) else { return nil }
-        let token = result as String
-        return token
+    func sbxgettoken(pid: Int32) -> UInt64? {
+        let addr = sbx_gettoken(pid)
+
+        guard addr != 0 else {
+            return nil
+        }
+
+        return addr
+    }
+
+    func sbxgettokenstring(pid: Int32) -> String? {
+        guard let cstr = sbx_copytoken(pid) else {
+            return nil
+        }
+        defer { sbx_freestr(cstr) }
+        return String(cString: cstr)
+    }
+
+    func sbxissuetoken(extClass: String, path: String) -> String? {
+        guard let cstr = sbx_issue_token(extClass, path) else {
+            return nil
+        }
+        defer { sbx_freestr(cstr) }
+        return String(cString: cstr)
     }
     
     func sbxelevate() {
