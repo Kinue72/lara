@@ -63,10 +63,14 @@ If lara doesnt work on your device, and you want to help the project, please als
 - File Manager (Full Disk r/w)
 - MobileGestalt Editor
 - 3 App Bypass
-- DirtyZero 2 (Broken)
+- DirtyZero 2
+- 5 App Dock
+- Status Bar Tweaks
+- Hide labels (Broken)
 
 ### coming soon:
-- remotecall????
+- JIT
+- App Decrypt
 
 ## known issues:
 - wont work on M5, A19 and A19 Pro due to MTE
