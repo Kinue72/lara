@@ -378,7 +378,7 @@ struct SettingsView: View {
             Button("Cancel", role: .cancel) {}
             Button("Delete", role: .destructive) {
                 clearkerncachedata()
-                hasoffsets = haskernproc()
+                //hasoffsets = haskernproc()
             }
         } message: {
             Text("This will delete the downloaded kernelcache and remove saved offsets.")

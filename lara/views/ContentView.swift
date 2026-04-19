@@ -11,7 +11,7 @@ import UniformTypeIdentifiers
 struct ContentView: View {
     @AppStorage("showfmintabs") private var showfmintabs: Bool = true
     @ObservedObject private var mgr = laramgr.shared
-    @State private var hasoffsets = haskernproc()
+    @State private var hasoffsets = true
     @State private var showsettings = false
     @State private var selectedmethod: method = .hybrid
 
@@ -68,14 +68,6 @@ struct ContentView: View {
                             Text("kernproc:")
                             Spacer()
                             Text(String(format: "0x%llx", getrootvnode()))
-                                .font(.system(.body, design: .monospaced))
-                                .foregroundColor(.secondary)
-                        }
-
-                        HStack {
-                            Text("rootvnode:")
-                            Spacer()
-                            Text(String(format: "0x%llx", getkernproc()))
                                 .font(.system(.body, design: .monospaced))
                                 .foregroundColor(.secondary)
                         }
